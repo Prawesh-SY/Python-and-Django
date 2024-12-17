@@ -1,12 +1,12 @@
 command='y'
 while command=="y":
     import random
-    num=random.randint(1,10)
+    num=random.randint(0,10)
     # while (command=="y"):
     #     num=int(7)
         
-    name=input("Enter your name: ")
-    print(f"Welcome {name}...\nFrom 0 to 10, I am thinking of a number...\nCan you guess the number... ")
+    # name=input("Enter your name: ")
+    print(f"Welcome ...\nFrom 0 to 10, I am thinking of a number...\nCan you guess the number... ")
     
     count =0
     guess=0
