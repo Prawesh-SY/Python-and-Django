@@ -186,3 +186,10 @@ months=["BAISHAK","JESTHA","ASAR","SHRAWAN","BHADRA","ASOJ","KARTIK","MANGSIR","
 daysInMonthsOf2081=[31,32,31,32,31,30,30,30,29,30,29,31]
 dict2081=dict(zip(months,daysInMonthsOf2081))
 print(dict2081)
+year=2056
+month=8
+day=17
+
+gYear=year-56
+gMonth= month-8
+gDay = day-17
