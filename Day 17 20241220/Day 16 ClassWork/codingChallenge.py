@@ -40,31 +40,66 @@ def digitadder(num):
         for i in numString:
             add=add+int(i)
         print("Sum of the digits = ",add)
-        pass
-    pass
+
 # Write a program that takes a string as input and prints the string in reverse order.
 def stringReverser(string):
-    pass
+    reverseString=''
+    # print(len(string))
+    # print(string[len(string)-1])
+    for z in range((len(string)-1),-1,-1):
+        # print(z)
+        reverseString = reverseString+string[z]        
+    print(reverseString)
+
 
 # Write a program that checks if a given word is a palidrome (reads the same forwards and backwards).
-def isPanidrom(string):
-    pass
+def isPalindrom(string):
+    stringTest=string.replace(" ","").lower()
+    if stringTest[::-1] == stringTest:
+        print(f"'{string}' is a PALINDROME")
+    else:
+        print(f"'{string}' is NOT a PALINDROME")
+
+
 
 # WAP that calculates the factorial of a given number n (where n is provided by the user).
-def factorial(num):
+def factorial(n):
+    if n==1:
+        return 1
+    else:
+        return n*factorial(n-1)
     pass
 
 # WAP that counts the number of vowels in a given string.
 def countVowels(string):
-    pass
+    count=0
+    for i in string:
+        if i == 'a' or "A" or 'e' or 'E' or 'i' or 'I' or 'o' or 'O' or 'u' or 'U':#or i == 'e' or i=='i' or i=='o' or i=='u':
+            count += 1
+    print(f"There are {count} vowels in the string")
+        
 
 # WAP that takes a number n as input and prints the square of all numbers from 1 to n.
 def squarer(num):
-    pass
+    if num==0:
+        return 0
+    else:
+        return num**2+squarer(num-1)
+
+def summer(n):
+    if n==0:
+        return 0
+    else:
+        return n + summer(n-1)
 
 # Write a Python porgram(WAPP) that takes a number as input and checks whether it is positive, negative, or zero.
-def numberLine(num):
-    pass
+def numberChecker(num):
+    if num<0:
+        print(f"The number is negative")
+    elif num>0:
+        print(f"The number is positive")
+    else:
+        print(f"The number is zero")
 
 # WAP that prints the following pattern:
 # *
@@ -73,7 +108,13 @@ def numberLine(num):
 # ****
 # *****
 def prymid(num):
-    pass
+    spacer=int(num/2)
+    for i in range(1,num+1):
+        space=" "*spacer
+        for j in range(i):
+            print(space,"*",end="")
+        # print("\n")w
+        spacer -= 1
 
 # WAP function that takes a string as input and returns a dictionary where the keys are the words in the string, and valuse are the lengths of those words.
 def lenthCal(string):
@@ -90,5 +131,14 @@ def studentAverage():
 
 # isEven()
 # maxMin("987363")
-wordCounter("Manoj Sir is legendary")
-digitadder(-55)
+# wordCounter("Manoj Sir is legendary")
+# digitadder(-55)
+# stringReverser(string="Python says Hello!!")
+# isPalindrom(string="The way yaw eht")
+# print(factorial(5))
+# countVowels(string="Na cheka na muhaar sringaara le, Chandrama ma pani daag hunxa")
+# print(squarer(num=10))
+# print(summer(80))
+# numberChecker(num=-30)
+prymid(num=10)
+

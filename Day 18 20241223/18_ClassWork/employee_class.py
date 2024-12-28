@@ -1,6 +1,8 @@
 employeeData=[
     {'name':'RAM', 'salary': 35000, 'bonus':2},
     {'name':'SAM', 'salary': 65000, 'bonus':5},
+    {'name':'KSHITISH', 'salary': 65000000,'bonus':500},
+    {'name':'ROSHAN', 'salary': 77775000, 'bonus':5}
 ]
 
 class Employee:
@@ -18,7 +20,7 @@ class Employee:
         bonusAmt=self.salary*(self.bonus/100)
         pass
     def salaryStructure(self):
-        return f"Employee's Name = {self.name}\nSalary = Rs. {self.salary}\nBonus %age = {self.bonus}%\nBonus Amount = Rs. {self.bonusAmt}\nTotal Salary(Salary + Bonus) = Rs. {self.salary+self.bonusAmt}"
+        return f"Employee's Name = {self.name}\nSalary = Rs.{self.salary}\nBonus %age = {self.bonus}%\nBonus Amount = Rs.{self.bonusAmt}\nTotal Salary(Salary + Bonus) = Rs.{self.salary+self.bonusAmt}\n\n"
     
 
 
@@ -27,3 +29,8 @@ for employee in employeeData:
     pass
 for employee in employeeData:
     print(globals()[employee['name']].salaryStructure())
+
+# print(RAM)
+# print(SAM)
+# print(ROSHAN)
+# print(ROSHAN.salaryStructure())

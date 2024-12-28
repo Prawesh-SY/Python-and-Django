@@ -1,0 +1,2 @@
+2024-12-28 18:02:32.251672,Raj,Dell,Inspiron 3520,34990,12th Gen Intel i3,2,10,
+2024-12-28 21:38:33.175209,Prawesh,Asus,Vivobook 16,52990,Intel i5,4,9,
