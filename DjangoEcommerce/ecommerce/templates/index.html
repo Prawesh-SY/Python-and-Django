@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block carousels %} {% include "carousel.html" %}
+{% endblock carousels %} {%block content %}
+<p>This is the content of the index page.</p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for key, value in products.items %}{% endfor %}
+  <div class="col">
+    <div class="card">
+      <img
+        src="..."
+        class="card-img-top"
+        alt="The url of the image needs to be fed here"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{value.product_name}}</h5>
+        <p class="card-text">{{value.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+.preheader {
+  background-color: aliceblue;
+  border-width: 2px;
+  border-color: black;
+  text-align: center;
+  
+}
+
+.body {
+  background-color: grey;
+  border-color: black;
+  height: 400px;
+
+  display: flex;
+}
+.left {
+  flex: 0.1;
+  background-color: green;
+}
+
+.right {
+  flex: 0.1;
+  background-color: red;
+}
+
+.mainBody {
+  flex: 0.8;
+  background-color: grey;
+  text-align: center;
+}
+
+footer {
+  background-color: yellow;
+  height: 50px;
+  
+}

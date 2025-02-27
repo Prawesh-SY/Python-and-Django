@@ -1,0 +1,8 @@
+1. What is the fucntion of "import os"?
+2. What is 'listdir'?
+3. What is the function of 'from os.path import isfile, join'?
+4. Why do we use 'pygame.init()'?
+5. What are the arguments and use cases of 'pygame.display.set_mode(())'?
+6. In 'class SpaceShuttle(pygame.sprite.Sprite)' why did we pass the argument 'pygame.sprite.Sprite'?
+7. What is the scope of pygame.Rect(x, y, width, height)
+

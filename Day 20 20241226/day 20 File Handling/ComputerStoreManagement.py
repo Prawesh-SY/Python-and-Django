@@ -6,10 +6,11 @@ current_time = datetime.now()
 
 class ComputerShop:
     
-    def __init__(self,file_path):
+    def __init__(self,inventory,wishList):
         self.fileList=[]
-        self.file_path=file_path
-        self.fileList.append(self.file_path)
+        self.inventory=inventory
+        self.wishList =  wishList
+        self.fileList.append(self.inventory)
              
     def menu(self,storeName):
         displayMessage=f"""
@@ -37,10 +38,9 @@ class ComputerShop:
     
     def add(self,allData):  # Add Inventory
         for item in allData:
-            with open(self.file_path,'a+') as fileObj:
+            with open(self.inventory,'a+') as fileObj:
                 fileObj.write(item)
                 fileObj.close()
-        self.read()
             
     def read(self):
         table = PrettyTable()
@@ -48,45 +48,28 @@ class ComputerShop:
         print("""
                                                     !!! INVENTORY !!!
               """)
-        with open(self.file_path,'r') as fileObj:
+        with open(self.inventory,'r') as fileObj:
             data = fileObj.readlines()
             fileObj.close()
             for line in data:
                 fields = line.split(",")
                 table.add_row(fields)
             print(table)
-                
-                # if len(temp) >=9:
-                #     for i in range(len(temp)-1):
-                #         print(temp[i],end="|")
-                #     print("\n")
-                    # print("Staff:",temp[1])
-                    # print("Brand: ",temp[2])
-                    # print("Model no.: ",temp[3])
-                    # print("Rate: ",temp[4])
-                    # print("Core: ",temp[5])
-                    # print("ID: ",temp[6])
-                    # print("Quantity: ",temp[7])
-                    # print(temp[8])
-                # else:
-                #     print("Incomplete Log: ",temp,"\n")
-                
             
     def delete(self,toBeDeleted):
         requiredLog = self.logSearch(toBeDeleted)
         # print(requiredLog)
         if requiredLog is not None:
-            with open(self.file_path, 'r') as file:
+            with open(self.inventory, 'r') as file:
                 data = file.readlines()
                 # print(data)
                 data.remove(requiredLog)
                 file.close()
-            with open(self.file_path,'w+') as file:
+            with open(self.inventory,'w+') as file:
                 for log in data:
                     file.write(log)
                 file.close()
-            
-        
+               
     def trx(self):
         updateConsole="""
             !!! UPDATE !!!
@@ -113,7 +96,8 @@ class ComputerShop:
             print("Invalid input")
             
     def sales(self,id,qty):
-        requiredLog = self.logSearch(id)
+        requiredLog = self.LogSearch(id) #Testing newLogSearch()
+        self.wishList(requiredLog)
         if requiredLog != None:
             requiredLog = requiredLog.split(",")
             if int(requiredLog[-2]) >= int(qty) :
@@ -134,7 +118,7 @@ class ComputerShop:
         self.trxComplete(requiredLog,id)
         
     def trxComplete(self,requiredLog,id):
-        with open(self.file_path, 'r+') as file:
+        with open(self.inventory, 'r+') as file:
             data = file.readlines()
             file.close()
         # print(data)
@@ -155,13 +139,13 @@ class ComputerShop:
             else:
                 trxComplete=trxComplete+str(x)
         data.append(trxComplete)
-        with open(self.file_path, "w+") as file:
+        with open(self.inventory, "w+") as file:
             for item in data:
                 file.write(item)
             file.close()
             
     def logSearch(self,searchKey):
-        with open(self.file_path, 'r+') as file:
+        with open(self.inventory, 'r+') as file:
             data = file.readlines()
             file.close()
         # print(data)
@@ -175,9 +159,33 @@ class ComputerShop:
         if requiredLog ==None:
             print(f"The log with ID {searchKey} not found")
         return requiredLog
+    
+    def newLogSearch(self,searchKey):
+        with open(self.inventory,"r+") as file:
+            data = file.readlines()
+            file.close()
+        searchResultList=[]
+        for log in data:
+            if searchKey in log:
+                searchResultList.append(log)
+        if searchResultList == []:
+            print(f"No match found for {searchKey}")
+        return searchResultList
+    def billGenerator(self):    # To be used in version 2
+        bill =  PrettyTable()
+        bill.field_names = ['S.NO.',"DESCRIPTION","QUANTITY",'UNIT PRICE','LINE TOTAL']
+        
+    def wishList(self,listToBeDisplayed):   # To be used in version 2
+        wishListTable=PrettyTable()
+        wishListTable.field_names =["DATE","STAFF NAME","BRAND","MODEL NO.","RATE","CORE","ID","QUANTITY"," "]
+        for row in listToBeDisplayed:
+            fields = row.split(",")
+            wishListTable.add_row(fields)
+        print(wishListTable)
+        pass
 
         
-EvoStore = ComputerShop("EvoStoreInventory.txt")
+EvoStore = ComputerShop("EvoStoreInventory.txt","wishList.txt")
 while True:
     EvoStore.menu("Evo Store")
     option = input("User Input: ")
@@ -193,11 +201,12 @@ while True:
         allData=[]
         allData.extend([date,",",staffName,",",computerBrand,",",modelNumber,",",price,",",cpu,",",id,",",quantity,",",'\n'])
         EvoStore.add(allData)
+        EvoStore.read()
         
     elif option == '2':     # Check inventory
         EvoStore.read()
            
-    elif option == "3":     # Update inventory
+    elif option == "3":     # Tranaction inventory
         EvoStore.trx()
                   
     elif option == "4":     # Delete from inventory

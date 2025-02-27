@@ -1,4 +1,5 @@
 """
+NEED TO WORK!!
 13. Roman to Integer
 Easy
 Topics
@@ -60,27 +61,28 @@ class Solution:
            'M':1000
         }
         romanNumberLength=len(s)
+        # print(romanNumberLength)
         romanNumber=s # CIV
         result=0
-        for i in range((romanNumberLength-1),-1,-1):
+        for i in range(romanNumberLength):
             # print([romanNumber[i]])
             # print(conversionTable[romanNumber[i]])
-            print(i)
-            if i != 0: 
-                print(i)        
-                if conversionTable[romanNumber[i]]>conversionTable[romanNumber[i-1]]:
-                    print(i,i-1)
-                    result=result+(conversionTable[romanNumber[i]]-conversionTable[romanNumber[i-1]])
+            # print(i)
+            if i < romanNumberLength-1: 
+                # print(conversionTable[romanNumber[i]])        
+                if conversionTable[romanNumber[i]]>conversionTable[romanNumber[i+1]]:
+                #     print(i,i-1)
+                    result=result+(conversionTable[romanNumber[i]])
                     print(result)
-                    i=i+1
-                elif conversionTable[romanNumber[i]]<conversionTable[romanNumber[i-1]]:
-                    print(i,i-1)
-                    result=result+conversionTable[romanNumber[i]]
+                #     i=i+1
+                elif conversionTable[romanNumber[i]]<conversionTable[romanNumber[i+1]]:
+                #     print(i,i-1)
+                    result=result+(conversionTable[romanNumber[i+1]] - conversionTable[romanNumber[i]])
                     print(result)
                     
-            # else:
-            #     result=result+conversionTable[romanNumber[i]]
-        return result
+            else:
+                result=result+conversionTable[romanNumber[i]]
+                print(result)
 
 sol=Solution()
-result=(sol.romanToInt(s="CIV"))
+result=(sol.romanToInt(s="IV"))

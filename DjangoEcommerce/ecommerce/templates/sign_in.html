@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block sign_in %}
+
+<form method="POST" action="{% url 'sign_in' %}">
+  {% csrf_token %}
+  <h6 style="color: red;">{{error}}</h6>
+  <div class="mb-3 row">
+    <label for="userName" class="col-sm-2 col-form-label">User Name</label>
+    <input
+      type="text"
+      class="form-control-plaintext"
+      id="staticEmail"
+      value="admin"
+      name="username"
+    />
+  </div>
+
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">
+      Password
+    </label>
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+      id="inputPassword"
+    />
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">Sign In</button>
+    </div>
+  </div>
+</form>
+{% endblock sign_in %}

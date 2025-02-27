@@ -1,0 +1,4 @@
+{% extends "layout.html" %} {% block user_profile %}
+<h1>Welcome {{request.user.first_name.upper}}</h1>
+<h6>E-mail: {{request.user.email}}</h6>
+{% endblock user_profile %}
