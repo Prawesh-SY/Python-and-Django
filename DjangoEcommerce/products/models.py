@@ -96,10 +96,11 @@ class Men(Clothes):
 
 class Category(models.Model):
     name = models.CharField(_("Category"), max_length=111, choices=(("Electronics", 'Electronics'),("Clothes", 'Clothes')))
-    main_categroy = """This should have data as per the cases:
+    main_category = """This should have data as per the cases:
                         Case 1: When the data is the main category like Clothes, Electronics
-                                main_categroy = null
-                        Case 2: When the data is the sub-category to a main category like Male of Clothes
+                                main_category = null
+                        Case 2: When the data is the sub-category to a main category like sub-category: Male of main cagetgory: Clothes
+                                main_category = <id of Clothes>
 
 
     """
